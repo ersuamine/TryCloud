@@ -1,11 +1,11 @@
-package net.trycloud.step_definitions;
+package com.trycloud.step_definitions;
 
 
 
 
-import net.trycloud.utilities.BrowserUtils;
-import net.trycloud.utilities.ConfigurationReader;
-import net.trycloud.utilities.Driver;
+import com.trycloud.utilities.BrowserUtils;
+import com.trycloud.utilities.ConfigurationReader;
+import com.trycloud.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -24,6 +24,7 @@ public class Hooks {
     @Before (order = 1)
     public void setupMethod(){
 
+        //driver wait setup
         Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
         Driver.getDriver().get(ConfigurationReader.getProperty("url"));
@@ -34,17 +35,13 @@ public class Hooks {
      */
     @After
     public void teardownMethod(Scenario scenario){
-
         if (scenario.isFailed()) {
 
             byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", scenario.getName());
-
         }
-
         BrowserUtils.sleep(2);
         Driver.closeDriver();
-
     }
 
 
