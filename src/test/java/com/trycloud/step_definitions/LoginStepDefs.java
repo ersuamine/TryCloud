@@ -7,8 +7,8 @@ import io.cucumber.java.en.Then;
 public class LoginStepDefs {
     LoginPage loginPage = new LoginPage();
 
-    @Then("the user is logged in")
-    public void the_user_is_logged_in() {
+    @Then("user is logged in by clicking login button")
+    public void user_is_logged_in_by_clicking() {
 
         loginPage.login();
     }
