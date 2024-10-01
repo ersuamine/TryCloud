@@ -6,7 +6,7 @@ Feature: As a user, I should be able to log in.
 
     #can opt to use this in your user story for simplicity
     Scenario: Basic login by clicking login button
-      Then the user is logged in
+      Then user is logged in by clicking login button
 
   Scenario Outline: Verify login with different user types
     Then the user logged in using "<submitType>"
